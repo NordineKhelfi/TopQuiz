@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorAccent"
+    tools:context="com.example.norma.topquiz.SplashScreenActivity">
+
+
+    <TextView
+        android:id="@+id/tv_TopQuiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Top Quiz"
+        android:gravity="center_horizontal"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:textColor="#FFFF"
+        android:layout_marginTop="50dp"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/iv_quran"
+        android:layout_width="129dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ic_quran" />
+
+    <ImageView
+        android:id="@+id/ivMosques"
+        android:layout_width="349dp"
+        android:layout_height="362dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/test_mosque_4" />
+
+
+</LinearLayout>
