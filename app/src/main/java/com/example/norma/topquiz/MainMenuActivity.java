@@ -3,13 +3,12 @@ package com.example.norma.topquiz;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 public class MainMenuActivity extends AppCompatActivity {
 
@@ -30,14 +29,15 @@ public class MainMenuActivity extends AppCompatActivity {
         ibSalat = (ImageButton) findViewById(R.id.ibSalat);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        if(!preferences.contains(String.valueOf(R.id.ibProphets))) preferences.edit().putBoolean(String.valueOf(R.id.ibProphets), true).apply();
+        if (!preferences.contains(String.valueOf(R.id.ibProphets)))
+            preferences.edit().putBoolean(String.valueOf(R.id.ibProphets), true).apply();
         //resetGame();
 
 
         // ***************************  Check which levels are unlocked ******************************
-        ibMuhammad.setImageResource( preferences.contains(String.valueOf(R.id.ibMuhammad)) ? R.drawable.ib_selector : R.drawable.mosque_bw);
-        ibQuran.setImageResource( preferences.contains(String.valueOf(R.id.ibQuran)) ? R.drawable.ib_selector : R.drawable.mosque_bw);
-        ibSalat.setImageResource( preferences.contains(String.valueOf(R.id.ibSalat)) ? R.drawable.ib_selector : R.drawable.mosque_bw);
+        ibMuhammad.setImageResource(preferences.contains(String.valueOf(R.id.ibMuhammad)) ? R.drawable.ib_selector : R.drawable.mosque_bw);
+        ibQuran.setImageResource(preferences.contains(String.valueOf(R.id.ibQuran)) ? R.drawable.ib_selector : R.drawable.mosque_bw);
+        ibSalat.setImageResource(preferences.contains(String.valueOf(R.id.ibSalat)) ? R.drawable.ib_selector : R.drawable.mosque_bw);
 
     }
 
@@ -47,20 +47,19 @@ public class MainMenuActivity extends AppCompatActivity {
 
         // ***************************  Check which levels are unlocked ******************************
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        ibMuhammad.setImageResource( preferences.contains(String.valueOf(R.id.ibMuhammad)) ? R.drawable.ib_selector : R.drawable.mosque_bw);
-        ibQuran.setImageResource( preferences.contains(String.valueOf(R.id.ibQuran)) ? R.drawable.ib_selector : R.drawable.mosque_bw);
-        ibSalat.setImageResource( preferences.contains(String.valueOf(R.id.ibSalat)) ? R.drawable.ib_selector : R.drawable.mosque_bw);
+        ibMuhammad.setImageResource(preferences.contains(String.valueOf(R.id.ibMuhammad)) ? R.drawable.ib_selector : R.drawable.mosque_bw);
+        ibQuran.setImageResource(preferences.contains(String.valueOf(R.id.ibQuran)) ? R.drawable.ib_selector : R.drawable.mosque_bw);
+        ibSalat.setImageResource(preferences.contains(String.valueOf(R.id.ibSalat)) ? R.drawable.ib_selector : R.drawable.mosque_bw);
     }
 
     public void onTopicClick(View view) {
 
-        if(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).contains(String.valueOf(view.getId()))){
+        if (PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).contains(String.valueOf(view.getId()))) {
 
             Intent intent = new Intent(MainMenuActivity.this, PlayerNameActivity.class);
             intent.putExtra(EXTRA_TOPIC, view.getId());
             startActivity(intent);
-        }
-        else{
+        } else {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("This topic is locked")
@@ -77,7 +76,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
     }
 
-    public void resetGame(){
+    public void resetGame() {
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         preferences.edit().remove(String.valueOf(R.id.ibMuhammad)).apply();

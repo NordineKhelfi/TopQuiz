@@ -1,13 +1,10 @@
 package com.example.norma.topquiz;
 
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.AndroidCharacter;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -20,9 +17,8 @@ import com.example.norma.topquiz.model.QuestionBank;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-public class GameActivity extends AppCompatActivity implements View.OnClickListener{
+public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String EXTRA_SCORE = "Extra score";
     public static final String EXTRA_NUMBER_OF_QUESTIONS = "Extra number of Q";
@@ -49,7 +45,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        progressBar = (ProgressBar) findViewById(R.id.pb_Progress) ;
+        progressBar = (ProgressBar) findViewById(R.id.pb_Progress);
         tv_question = (TextView) findViewById(R.id.activity_game_question_text);
         bAnswer1 = (Button) findViewById(R.id.activity_game_answer1_btn);
         bAnswer2 = (Button) findViewById(R.id.activity_game_answer2_btn);
@@ -78,7 +74,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    private void displayQuestion(Question question){
+    private void displayQuestion(Question question) {
 
         tv_question.setText(question.getQuestion());
         bAnswer1.setText(question.getChoiceList().get(0));
@@ -89,7 +85,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    QuestionBank generateQuestions(){
+    QuestionBank generateQuestions() {
 
 
         ArrayList<Question> lProphetQuestions = new ArrayList<Question>();
@@ -217,11 +213,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         int responseIndex = (int) v.getTag();
 
         //Checking the answer
-        if(responseIndex == question.getAnswerIndex()){
+        if (responseIndex == question.getAnswerIndex()) {
             Toast.makeText(this, "Congratulations !!!", Toast.LENGTH_SHORT).show();
             mScore++;
-        }
-        else{
+        } else {
             Toast.makeText(this, "Try again ..", Toast.LENGTH_SHORT).show();
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Correction")
@@ -236,7 +231,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void run() {
                 //GAME OVER
-                if(--iNumberOfQuestions == 0){
+                if (--iNumberOfQuestions == 0) {
                     //Toast.makeText(this, "Your score : " + String.valueOf(mScore), Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent();
@@ -245,7 +240,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     setResult(RESULT_OK, intent);
                     finish();
                 } else {
-                //NEXT QUESTION
+                    //NEXT QUESTION
                     question = questionBank.getQuestion();
                     displayQuestion(question);
                     //progressBar.setProgress(progressBar.getProgress() + 1); //Increment the pgBar 2 sec after the click
